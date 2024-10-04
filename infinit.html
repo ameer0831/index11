@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{
+        background: #492bda;
+        margin: 0;
+        padding: 0;
+    }
+    #infinite-list{
+        background: white;
+        margin-top: 10%;
+        width: 200px;
+        height: 300px;
+        overflow: auto;
+        margin:30px ;
+        padding:20px ;
+        display: block;
+        margin: 0 auto;
+        box-shadow: 0 10px 40px 0 rgba(47,47,47,1)
+    }
+    .main{
+        margin-top: 10%;
+    
+    }
+    li{
+      padding: 10px;
+      list-style: none;
+      border-bottom: 1px solid #eee;
+    }
+    li:hover{
+        background: #ccc;
+    }</style>
+    <link rel="stylesheet" href="infinite.css">
+</head>
+<body>
+    <div class="main">
+    <li id="infinite-list">
+
+    </li>
+  </div>
+  <script>var listElm = document.querySelector('#infinite-list');
+
+
+    var nextItem = 1;
+    var loadMore = function(){
+        for(var i=0;i < 20; i++){
+            var item = document.createElement('li');
+            item.innerText = 'item' + nextItem++;
+            listElm.appendChild(item);
+        }
+    }
+    listElm.addEventListener('scroll', function(){
+      if(listElm.scrollTop + listElm.clientHeightn >= listElm.scrollHeight){
+        loadMore();
+      }
+    
+    
+    });
+      loadMore();</script>
+  <script src="infinite.js"></script>
+</body>
+</html>

@@ -78,29 +78,7 @@
   </div>
 
 
-  <script>const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
-
-    const buttons = document.querySelectorAll('.choice');
-    const resultText = document.getElementById('result-text');
-    const resetBtn = document.getElementById('reset-btn');
-    
-    let playerChoice = '';
-    let computerChoice = '';
-    
-    
-    function determineWinner(player, computer) {
-      if (player === computer) {
-        return 'tie';
-      }
-      if (
-        (player === 'rock' && (computer === 'scissors' || computer === 'lizard')) ||
-        (player === 'paper' && (computer === 'rock' || computer === 'spock')) ||
-        (player === 'scissors' && (computer === 'paper' || computer === 'lizard')) ||
-        (player === 'lizard' && (computer === 'spock' || computer === 'paper')) ||
-        (player === 'spock' && (computer === 'rock' || computer === 'scissors'))
-      ) {
-        return 'player';
-      }</script>
+  <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
 
   
   <script></script>

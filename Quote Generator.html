@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles/Styles.css">
+    <style>* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        height: 100vh;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        background: #878878;
+    }
+    
+    .container {
+        width: 50%;
+        min-height: 300px;
+        background: #0c0c0c;
+        color: #fff;
+        border: 5px solid #ddd;
+    }
+    
+    .container h1 {
+        font-size: 45px;
+        border-bottom: 5px solid #ddd;
+        color: #ccc;
+    }
+    
+    .container button {
+        padding: 10px 30px;
+        margin-top: 20px;
+    }
+    
+    .container .main p {
+        padding: 20px;
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bolder;
+    }
+    
+    .container .main span {
+        color: aqua;
+        font-size: 18px;
+    }</style>
+    <title>Quotes</title>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1>Quotes</h1>
+        <button class="generate">Generate</button>
+        <div class="main">
+            <p style="color: chartreuse;" class="quote">
+               " People Will Realize That Software Is Not A Product. You Use It To Build A Product."
+            </p>
+            <span style="color: rgb(218, 55, 255);" class="author">Linus Torvalds</span>
+        </div>
+    </div>
+
+      <script>//Get All Quotes
+        const quotes = [
+            {
+                quote:
+                    "Laughter is the shortest distance between two people.",
+                author: "Victor Borge"
+            },
+            {
+                quote:
+                    "Programmers are constantly making things more complicated than they need to be because future. Program for Today.",
+                author: "Mark Twain"
+            },
+            {
+                quote:
+                    "Code is like humor. When you have to explain it, It's Bad.",
+                author: "St. Augustine"
+            },
+            {
+                quote: "The proper use of comments is to compensate for our failure to express ourself in code.",
+                author: "Robert C Martin"
+            },
+            {
+                quote:
+                    "If You Can't deploy your services independently then they are not microservice. ",
+                author: "Daniel Bryant"
+            },
+            {
+                quote:
+                    "Programming is key concept who want to understand and must have interested of ourself.",
+                author: " Robert Louis Stevenson"
+            }
+        ];
+        
+        //Button Generate Quotes
+        const btn = document.querySelector('.generate');
+        
+        //Add Event Listener
+        btn.addEventListener('click', () => {
+        
+            //Get Random text of Quotes
+            let random = Math.floor(Math.random() * quotes.length);
+            // console.log(random);
+        
+            //Now Show Text On Screen
+            document.querySelector('.quote').innerText = quotes[random].quote;
+            document.querySelector('.author').innerText = quotes[random].author;
+        
+        });</script>
+    <script src="Script.js"></script>
+</body>
+
+</html>
