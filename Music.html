@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <style>body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgb(168, 168, 230);
+    }
+    
+    .music-player {
+        background: rgb(241, 180, 180);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .controls {
+        margin: 20px 0;
+    }
+    
+    button {
+        padding: 10px 15px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+    
+    .track-info {
+        margin-top: 10px;
+    }
+    </style>
+    </style>
+    <title>Music Player</title>
+</head>
+<body>
+    <div class="music-player">
+        <h1 id="track-title">Track Title</h1>
+        <audio id="audio" controls>
+            <source id="audio-source" src="water/1-kgf-amma-57477.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+        <div class="controls">
+            <button id="prev">Previous</button>
+            <button id="play">Play</button>
+            <button id="next">Next</button>
+        </div>
+        <div class="track-info">
+            <p id="track-info"></p>
+        </div>
+    </div>
+    <script>
+        const tracks = [
+        {
+            title: "Track 1",
+            src: "path/to/your/1-kgf-amma-57477.mp3"
+        },
+        {
+            title: "Track 2",
+            src: "path/to/your/plaster.mp3"
+        },
+        {
+            title: "Track 3",
+            src: "path/to/your/water.mp3"
+        }
+    ];
+    
+    let currentTrackIndex = 0;
+    
+    const audio = document.getElementById('audio');
+    const audioSource = document.getElementById('audio-source');
+    const trackTitle = document.getElementById('track-title');
+    const trackInfo = document.getElementById('track-info');
+    
+    const playButton = document.getElementById('play');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    
+    function loadTrack(index) {
+        audioSource.src = tracks[index].src;
+        trackTitle.textContent = tracks[index].title;
+        audio.load();
+        trackInfo.textContent = Now playing : ${tracks[index].title};
+    }
+    
+    function playTrack() {
+        audio.play();
+    }
+    
+    function pauseTrack() {
+        audio.pause();
+    }
+    
+    function nextTrack() {
+        currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+        loadTrack(currentTrackIndex);
+        playTrack();
+    }
+    
+    function prevTrack() {
+        currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+        loadTrack(currentTrackIndex);
+        playTrack();
+    }
+    
+    // Event Listeners
+    playButton.addEventListener('click', () => {
+        if (audio.paused) {
+            playTrack();
+            playButton.textContent = "Pause";
+        } else {
+            pauseTrack();
+            playButton.textContent = "Play";
+        }
+    });
+    
+    nextButton.addEventListener('click', nextTrack);
+    prevButton.addEventListener('click', prevTrack);
+    
+    // Load the first track
+    loadTrack(currentTrackIndex);
+    </script>
+</body>
+</html>
